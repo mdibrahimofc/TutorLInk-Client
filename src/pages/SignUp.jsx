@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../firebase/AuthProvider";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
+    const {register, profileUpdate} = useContext(AuthContext)
     const handleSignUp = e => {
         e.preventDefault()
         const form = new FormData(e.target)
         const initialData = Object.fromEntries(form.entries())
         const {name, email, photo, password} = initialData
-        console.log(name, email, photo, password);
+
+        register(email, password)
+        .then(res=> {
+            toast.success("Acount created successful")
+            profileUpdate(name, photo)
+        })
     }
   return (
     <div className="dark:bg-gray-800">
@@ -28,6 +36,7 @@ const SignUp = () => {
                 type="text"
                 name="name"
                 id="name"
+                required
                 placeholder="MD. Ibrahim"
                 className="w-full px-3 py-2 border rounded-md dark:border-gray-600 dark:bg-gray-700 dark:text-gray-50"
               />
@@ -40,6 +49,7 @@ const SignUp = () => {
                 type="url"
                 name="photo"
                 id="url"
+                required
                 placeholder="https://www.craiyon.com/image/BIfyRw2PTLqJ5xpgKBVTIg"
                 className="w-full px-3 py-2 border rounded-md dark:border-gray-600 dark:bg-gray-700 dark:text-gray-50"
               />
@@ -51,6 +61,7 @@ const SignUp = () => {
               <input
                 type="email"
                 name="email"
+                required
                 id="email"
                 placeholder="leroy@jenkins.com"
                 className="w-full px-3 py-2 border rounded-md dark:border-gray-600 dark:bg-gray-700 dark:text-gray-50"
@@ -66,6 +77,7 @@ const SignUp = () => {
                 type="password"
                 name="password"
                 id="password"
+                required
                 placeholder="*****"
                 className="w-full px-3 py-2 border rounded-md dark:border-gray-600 dark:bg-gray-700 dark:text-gray-50"
               />
