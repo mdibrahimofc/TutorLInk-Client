@@ -23,6 +23,10 @@ const router = createBrowserRouter([
         {
           path: "signin",
           element: <SignIn/>
+        },
+        {
+          path: "addTutorials",
+          element: <p>Hello</p>
         }
       ]
     },

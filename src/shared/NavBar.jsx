@@ -50,10 +50,10 @@ const NavBar = () => {
             Home
           </NavLink>
           <NavLink
-            to="/about"
+            to="/addTutorials"
             className="hover:bg-gray-200 dark:hover:bg-gray-700 px-3 py-2 rounded"
           >
-            About
+            Add Tutorials
           </NavLink>
           <NavLink
             to="/contact"
