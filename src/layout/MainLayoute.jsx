@@ -5,7 +5,7 @@ import Footer from "../shared/Footer";
 
 const MainLayout = () => { // Fixed typo in component name
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col max-w-[1530px] mx-auto">
       <NavBar />
       {/* Fixed className syntax */}
       <div className="flex-grow">

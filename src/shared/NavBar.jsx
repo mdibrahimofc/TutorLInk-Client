@@ -32,7 +32,7 @@ const NavBar = () => {
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   return (
-    <nav className="bg-base-100 dark:bg-gray-900 dark:text-white shadow-md">
+    <nav className="bg-base-100 sticky top-0 z-50 dark:bg-gray-900 dark:text-white shadow-md">
       <div className="container mx-auto px-4 flex justify-between items-center h-16">
         {/* Logo */}
         <div>
