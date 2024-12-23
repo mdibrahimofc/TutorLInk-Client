@@ -4,8 +4,7 @@
 
 Language Exchange is an online platform designed to connect users with tutors across various languages and subjects. It simplifies the process of finding, reviewing, and booking tutors through an interactive and user-friendly interface. This platform aims to promote accessible learning globally and streamline the tutor hiring process. Users can browse categories, view detailed tutor profiles, and book sessions securely. 
 
-## Live URL
-[Insert live URL here]
+
 
 ## Key Features
 - **Responsive Design**: Fully responsive for mobile, tablet, and desktop devices.

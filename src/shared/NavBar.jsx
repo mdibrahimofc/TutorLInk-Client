@@ -13,6 +13,7 @@ const NavBar = () => {
   const toggleDisplayName = () => {
     setIsNameVisible(!isNameVisible);
   };
+  console.log(user?.photoURL);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("dark-mode");

@@ -6,6 +6,7 @@ import Home from "../layout/Home";
 import MainLayoute from "../layout/MainLayoute";
 import SignUp from "../pages/SignUp";
 import SignIn from "../pages/SignIn";
+import AddTutorials from "../pages/AddTutorials/AddTutorials";
 
 const router = createBrowserRouter([
     {
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
         },
         {
           path: "addTutorials",
-          element: <p>Hello</p>
+          element: <AddTutorials/>
         }
       ]
     },

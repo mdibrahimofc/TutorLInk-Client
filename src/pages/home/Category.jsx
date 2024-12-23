@@ -60,6 +60,7 @@ const Category = () => {
     },
   ];
 
+
   return (
     <div className="dark:bg-gray-800">
         <div className="grid dark:bg-gray-800 grid-cols-1 py-6 gap-5 sm:grid-cols-2 md:grid-cols-3 w-11/12 lg:w-4/5 mx-auto">
