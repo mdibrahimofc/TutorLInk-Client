@@ -10,15 +10,6 @@ const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
 
-    useEffect(()=>{
-        const unsubscribe = onAuthStateChanged(auth, (currentUser)=>{
-            console.log(currentUser);
-            setUser(currentUser)
-            setLoading(false)
-        })
-        return () => unsubscribe()
-    },[])
-
     const login = (email, password) => {
         setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
@@ -60,6 +51,15 @@ const AuthProvider = ({children}) => {
             toast.error(err);
         })
     }
+
+    useEffect(()=>{
+        const unsubscribe = onAuthStateChanged(auth, (currentUser)=>{
+            console.log(currentUser);
+            setUser(currentUser)
+            setLoading(false)
+        })
+        return () => unsubscribe()
+    },[])
 
     const authInfo = {
         loading,

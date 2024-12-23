@@ -24,7 +24,7 @@ const SignIn = () => {
         })
     }
   return (
-    <div className="dark:bg-gray-800">
+    <div className="dark:bg-gray-800 py-6">
       <div className="w-full max-w-xl mx-auto p-4 rounded-md shadow sm:p-8 dark:bg-gray-800 dark:text-gray-800">
         <h2 className="mb-3 text-3xl font-semibold text-center">
           Login to your account

@@ -18,7 +18,7 @@ const SignUp = () => {
         })
     }
   return (
-    <div className="dark:bg-gray-800">
+    <div className="dark:bg-gray-800 py-6">
       <div className="flex flex-col max-w-xl mx-auto p-6 rounded-md sm:p-10 dark:bg-gray-800 dark:text-gray-50">
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl font-bold">Sign up</h1>
