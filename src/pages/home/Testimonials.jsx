@@ -23,21 +23,21 @@ const testimonials = [
     role: 'Student',
   },
   {
-    id: 1,
+    id: 4,
     name: 'Jane Doe',
     profileImage: 'https://via.placeholder.com/80', // Replace with actual image URL
     review: 'This platform connected me with an amazing tutor who helped me ace my exams!',
     role: 'Student',
   },
   {
-    id: 2,
+    id: 5,
     name: 'John Smith',
     profileImage: 'https://via.placeholder.com/80', // Replace with actual image URL
     review: 'Teaching here has been an incredible experience. The system is smooth and easy to use.',
     role: 'Tutor',
   },
   {
-    id: 3,
+    id: 6,
     name: 'Emily Johnson',
     profileImage: 'https://via.placeholder.com/80', // Replace with actual image URL
     review: 'I love how easy it is to find a tutor that matches my learning style.',

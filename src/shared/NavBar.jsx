@@ -13,7 +13,6 @@ const NavBar = () => {
   const toggleDisplayName = () => {
     setIsNameVisible(!isNameVisible);
   };
-  console.log(user?.photoURL);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("dark-mode");
@@ -57,10 +56,10 @@ const NavBar = () => {
             Add Tutorials
           </NavLink>
           <NavLink
-            to="/contact"
+            to="/find-tutors"
             className="hover:bg-gray-200 dark:hover:bg-gray-700 px-3 py-2 rounded"
           >
-            Contact
+            Find tutors
           </NavLink>
         </div>
 

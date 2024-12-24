@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../firebase/AuthProvider";
+import axios from "axios"
 
 const AddTutorials = () => {
   const { user } = useContext(AuthContext);
@@ -10,6 +11,17 @@ const AddTutorials = () => {
     const description = form.description.value;
     const price = form.price.value;
     const language = form.Language.value;
+    const review = 0
+    const tutorsName = form.userName.value;
+    const tutorsEmail = form.userEmail.value;
+
+    const tutorial = {photo, description, price, language, review, tutorsEmail, tutorsName}
+
+    axios.post("http://localhost:5000/addTutorial", tutorial)
+    .then(res=> {
+      console.log(res.data);
+    })
+
   };
 
   return (
