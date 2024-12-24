@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import UseAxios from "../../Hooks/UseAxios";
-import { toast } from "react-toastify";
 import { AuthContext } from "../../firebase/AuthProvider";
+import toast from "react-hot-toast";
 
 const MyBookedTutors = () => {
   const [bookedTutors, setBookedTutors] = useState([]);
@@ -14,9 +14,11 @@ const MyBookedTutors = () => {
 
   // Fetch all booked tutors for the logged-in user
   useEffect(() => {
+    if(!user?.email){
+        return
+    }
     const fetchBookedTutors = async () => {
       try {
-        const loggedInUser = JSON.parse(localStorage.getItem("user")); // Assuming user data is stored in localStorage
         const res = await secureAxios.get(`/bookings?email=${user?.email}`);
         setBookedTutors(res.data);
         console.log(res.data);
@@ -28,7 +30,9 @@ const MyBookedTutors = () => {
       }
     };
     fetchBookedTutors();
-  }, [secureAxios]);
+  }, [user?.email]);
+
+  console.log(bookedTutors);
 
   // Handle Review Button
   const handleAddReview = async (tutorId) => {
