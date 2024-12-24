@@ -12,6 +12,7 @@ import Error from "../pages/Error";
 import FindTutors from "../layout/FindTutors";
 import TutorDetails from "../pages/TutorDetails/TutorDetails";
 import MyBookedTutors from "../pages/MyBookedTutors/MyBookedTutors";
+import MyTutorials from "../pages/MyTutorials/MyTutorials";
 
 const router = createBrowserRouter([
     {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
         {
           path: "mybookedtutor",
           element: <MyBookedTutors/>
+        },
+        {
+          path: "mytutorials",
+          element: <MyTutorials/>
         }
       ]
     },

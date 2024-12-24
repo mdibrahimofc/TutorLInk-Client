@@ -67,6 +67,12 @@ const NavBar = () => {
           >
             My Booked Tutor
           </NavLink>
+          <NavLink
+            to="/mytutorials"
+            className="hover:bg-gray-200 dark:hover:bg-gray-700 px-3 py-2 rounded"
+          >
+            My Tutorials
+          </NavLink>
         </div>
 
         {/* Mobile Menu Toggle */}
