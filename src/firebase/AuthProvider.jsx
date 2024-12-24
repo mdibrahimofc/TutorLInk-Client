@@ -1,66 +1,96 @@
-import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import {
+    createUserWithEmailAndPassword,
+    GoogleAuthProvider,
+    onAuthStateChanged,
+    signInWithEmailAndPassword,
+    signInWithPopup,
+    signOut,
+    updateProfile,
+} from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "./firebase.config";
-import swal from 'sweetalert';
+import axios from 'axios'; // Added axios import
 import toast, { Toaster } from "react-hot-toast";
 
-export const AuthContext = createContext(null)
-const AuthProvider = ({children}) => {
+export const AuthContext = createContext(null);
 
-    const [user, setUser] = useState(null)
-    const [loading, setLoading] = useState(true)
+const AuthProvider = ({ children }) => {
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
+    // 🟢 Login with Email and Password
     const login = (email, password) => {
-        setLoading(true)
-        return signInWithEmailAndPassword(auth, email, password)
-    }
-    const register = (email, password) => {
-        setLoading(true)
-        return createUserWithEmailAndPassword(auth, email, password)
-    }
+        setLoading(true);
+        return signInWithEmailAndPassword(auth, email, password);
+    };
 
+    // 🟢 Register with Email and Password
+    const register = (email, password) => {
+        setLoading(true);
+        return createUserWithEmailAndPassword(auth, email, password);
+    };
+
+    // 🟢 Update Profile
     const profileUpdate = (name, photo) => {
-        setLoading(true)
+        setLoading(true);
         return updateProfile(auth.currentUser, {
             displayName: name,
-        photoURL: photo,
-        })
-    }
+            photoURL: photo,
+        });
+    };
 
-    const googleProvider = new GoogleAuthProvider()
+    // 🟢 Google Login
+    const googleProvider = new GoogleAuthProvider();
     const googleLogin = () => {
-        setLoading(true)
-        signInWithPopup(auth, googleProvider)
-        .then ( res => {
-            console.log(res.user);
-            toast.success("You have successfully log in")
-        })
-        .catch(err=> {
-            toast.error(err);
-        })
-    }
+        setLoading(true);
+        return signInWithPopup(auth, googleProvider)
+            .then((res) => {
+                console.log(res.user);
+                toast.success("You have successfully logged in");
+            })
+            .catch((err) => {
+                toast.error(err.message);
+            });
+    };
 
+    // 🟢 Logout
     const logout = () => {
-        setLoading(true)
-        signOut(auth)
-        .then(res => {
-            console.log(res);
-            toast.success("sign out successfull")
-        })
-        .catch(err=> {
-            toast.error(err);
-        })
-    }
+        setLoading(true);
+        return signOut(auth)
+            .then(() => {
+                toast.success("Sign-out successful");
+            })
+            .catch((err) => {
+                toast.error(err.message);
+            });
+    };
 
-    useEffect(()=>{
-        const unsubscribe = onAuthStateChanged(auth, (currentUser)=>{
+    // 🟢 Observe Auth State Changes
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             console.log(currentUser);
-            setUser(currentUser)
-            setLoading(false)
-        })
-        return () => unsubscribe()
-    },[])
+            setUser(currentUser);
+            if (currentUser?.email) {
+                const user = { email: currentUser.email };
+                console.log(user);
+                axios
+                    .post("https://b10a11-server-side-mdibrahimofc.vercel.app/jwt", user, { withCredentials: true })
+                    .then((res) => {
+                        console.log(res);
+                        setLoading(false);
+                    })
+                    .catch((err) => {
+                        console.error(err);
+                        setLoading(false);
+                    });
+            } else {
+                setLoading(false);
+            }
+        });
+        return () => unsubscribe(); 
+    }, []);
 
+    // 🟢 Auth Context Value
     const authInfo = {
         loading,
         user,
@@ -68,13 +98,14 @@ const AuthProvider = ({children}) => {
         logout,
         register,
         googleLogin,
-        profileUpdate
-    }
+        profileUpdate,
+    };
+
     return (
         <AuthContext.Provider value={authInfo}>
             <div>
                 {children}
-                <Toaster/>
+                <Toaster />
             </div>
         </AuthContext.Provider>
     );

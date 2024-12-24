@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../firebase/AuthProvider";
 import axios from "axios"
+import UseAxios from "../../Hooks/UseAxios";
 
 const AddTutorials = () => {
+  const secureAxios = UseAxios()
   const { user } = useContext(AuthContext);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,7 +19,7 @@ const AddTutorials = () => {
 
     const tutorial = {photo, description, price, language, review, tutorsEmail, tutorsName}
 
-    axios.post("http://localhost:5000/addTutorial", tutorial)
+    secureAxios.post("http://localhost:5000/addTutorial", tutorial)
     .then(res=> {
       console.log(res.data);
     })
@@ -69,15 +71,15 @@ const AddTutorials = () => {
               <option disabled value="">
                 Select a language category
               </option>
-              <option>English Tutors</option>
-              <option>Spanish Tutors</option>
-              <option>French Tutors</option>
-              <option>German Tutors</option>
-              <option>Italian Tutors</option>
-              <option>Chinese Tutors</option>
-              <option>Arabic Tutors</option>
-              <option>Japanese Tutors</option>
-              <option>Portuguese Tutors</option>
+              <option>English</option>
+              <option>Spanish</option>
+              <option>French</option>
+              <option>German</option>
+              <option>Italian</option>
+              <option>Chinese</option>
+              <option>Arabic</option>
+              <option>Japanese</option>
+              <option>Portuguese</option>
             </select>
           </div>
 

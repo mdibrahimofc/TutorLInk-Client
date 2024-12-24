@@ -1,29 +1,49 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import UseAxios from "../../Hooks/UseAxios";
+import { Link } from "react-router-dom";
 
-const Tutors = () => {
-    const {image, name, language, price, reviews} = {image:"s", name:"a", language:"a", price:"a", reviews:"a"}
-    const tutor = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+const Tutors = ({category}) => {
+  const [tutors, setTutors] = useState([])
+  console.log(category);
+  const secureAxios = UseAxios()
+  useEffect(()=> {
+    if(category !== "all"){
+      secureAxios.get(`/tutors/${category}`)
+    .then(res=> {
+      console.log(category);
+      setTutors(res.data);
+    })
+    }else {
+      secureAxios.get("/tutors")
+      .then(res=> {
+        console.log(category);
+        setTutors(res.data);
+      })
+    }
+    
+  },[category])
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {
-        tutor.map((t, idx)=> <div key={idx} className="bg-white dark:bg-gray-700 shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow">
-            <img src={image} alt={name} className="w-full h-48 object-cover" />
+        tutors.map((t, idx)=> <div key={idx} className="bg-white dark:bg-gray-700 shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow">
+            <img src={t.image} alt={t.name} className="w-full h-48 object-cover" />
             <div className="p-4">
               <h3 className="text-xl font-bold text-gray-800 dark:text-white">
-                {name}
+                {t.name}
               </h3>
               <p className="text-gray-600 dark:text-gray-300">
-                🗣️ Language: {language}
+                🗣️ Language: {t.language}
               </p>
               <p className="text-gray-600 dark:text-gray-300">
-                💵 Price: ${price}/hour
+                💵 Price: ${t.price}/hour
               </p>
               <p className="text-gray-600 dark:text-gray-300">
-                ⭐ Reviews: {reviews}
+                ⭐ Reviews: {t.review}
               </p>
-              <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors w-full">
+              <Link to={`/tutor/${t._id}`}><button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors w-full">
                 View Details
-              </button>
+              </button></Link>
             </div>
           </div>)
       }

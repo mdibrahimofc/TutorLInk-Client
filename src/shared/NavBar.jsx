@@ -56,10 +56,16 @@ const NavBar = () => {
             Add Tutorials
           </NavLink>
           <NavLink
-            to="/find-tutors"
+            to="/find-tutors/all"
             className="hover:bg-gray-200 dark:hover:bg-gray-700 px-3 py-2 rounded"
           >
             Find tutors
+          </NavLink>
+          <NavLink
+            to="/mybookedtutor"
+            className="hover:bg-gray-200 dark:hover:bg-gray-700 px-3 py-2 rounded"
+          >
+            My Booked Tutor
           </NavLink>
         </div>
 

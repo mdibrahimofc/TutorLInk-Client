@@ -11,15 +11,15 @@ const Stats = () => {
             </div>
             <div className="flex shadow-lg flex-col items-center justify-center">
                 <p className="text-xl md:text-2xl dark:text-white font-bold">000</p>
-                <p className="font-medium dark:text-white">Experienced tutors</p>
+                <p className="font-medium dark:text-white">5 stars tutors review</p>
             </div>
             <div className="flex shadow-lg flex-col items-center justify-center">
                 <p className="text-xl md:text-2xl dark:text-white font-bold">000</p>
-                <p className="font-medium dark:text-white">Experienced tutors</p>
+                <p className="font-medium dark:text-white">Subject taughts</p>
             </div>
             <div className="flex shadow-lg flex-col items-center justify-center">
                 <p className="text-xl md:text-2xl dark:text-white font-bold">000</p>
-                <p className="font-medium dark:text-white">Experienced tutors</p>
+                <p className="font-medium dark:text-white">Users count</p>
             </div>
         </div>
         </div>
