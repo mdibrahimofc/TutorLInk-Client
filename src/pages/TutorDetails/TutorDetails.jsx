@@ -38,7 +38,8 @@ const TutorDetails = () => {
         language: tutor.language,
         price: tutor.price,
         tutorEmail: tutor.email,
-        email: user?.email, // Assume user email is stored in localStorage
+        email: user?.email, 
+        review: tutor.review
       };
       console.log(bookingData);
 

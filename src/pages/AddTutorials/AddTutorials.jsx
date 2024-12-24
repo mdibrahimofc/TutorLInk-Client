@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../firebase/AuthProvider";
 import axios from "axios"
 import UseAxios from "../../Hooks/UseAxios";
+import toast from "react-hot-toast";
 
 const AddTutorials = () => {
   const secureAxios = UseAxios()
@@ -9,7 +10,7 @@ const AddTutorials = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-    const photo = form.photo.value;
+    const image = form.photo.value;
     const description = form.description.value;
     const price = form.price.value;
     const language = form.Language.value;
@@ -17,11 +18,12 @@ const AddTutorials = () => {
     const tutorsName = form.userName.value;
     const tutorsEmail = form.userEmail.value;
 
-    const tutorial = {photo, description, price, language, review, tutorsEmail, tutorsName}
+    const tutorial = {image, description, price, language, review, tutorsEmail, tutorsName}
 
-    secureAxios.post("http://localhost:5000/addTutorial", tutorial)
+    secureAxios.post("/addTutorial", tutorial)
     .then(res=> {
       console.log(res.data);
+      toast.success("tutorial added successfull")
     })
 
   };

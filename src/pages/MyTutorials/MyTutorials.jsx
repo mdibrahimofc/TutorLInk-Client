@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import UseAxios from "../../Hooks/UseAxios";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../firebase/AuthProvider";
+import { Link } from "react-router-dom";
 
 const MyTutorials = () => {
   const [tutorials, setTutorials] = useState([]);
@@ -9,6 +10,8 @@ const MyTutorials = () => {
   const secureAxios = UseAxios();
 
   const {user} = useContext(AuthContext)
+
+  console.log(user?.email);
 
   // Fetch tutorials added by the logged-in user
   useEffect(() => {
@@ -27,26 +30,51 @@ const MyTutorials = () => {
   }, [secureAxios]);
 
   // Handle Delete
-  const handleDelete = async (tutorialId) => {
-    const confirmDelete = window.confirm("Are you sure you want to delete this tutorial?");
-    if (!confirmDelete) return;
-
-    try {
-      await secureAxios.delete(`/tutorials/${tutorialId}`);
-      setTutorials((prev) => prev.filter((tutorial) => tutorial._id !== tutorialId));
-      toast.success("Tutorial deleted successfully!");
-    } catch (error) {
-      console.error("Error deleting tutorial:", error);
-      toast.error("Failed to delete the tutorial.");
-    }
+  const handleDelete = (tutorialId) => {
+    toast(
+      (t) => (
+        <div className="p-4">
+          <p className="text-lg">Are you sure you want to delete this tutorial?</p>
+          <div className="flex justify-end gap-2 mt-4">
+            <button
+              onClick={async () => {
+                try {
+                  await secureAxios.delete(`/tutorials/${tutorialId}`);
+                  setTutorials((prev) => prev.filter((tutorial) => tutorial._id !== tutorialId));
+                  toast.success("Tutorial deleted successfully!");
+                } catch (error) {
+                  console.error("Error deleting tutorial:", error);
+                  toast.error("Failed to delete the tutorial.");
+                }
+                toast.dismiss(t.id);
+              }}
+              className="bg-red-500 text-white px-3 py-1 rounded"
+            >
+              Confirm
+            </button>
+            <button
+              onClick={() => toast.dismiss(t.id)}
+              className="bg-gray-300 px-3 py-1 rounded"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      ),
+      {
+        duration: Infinity,
+        position: 'top-center',
+        style: {
+          maxWidth: '400px',
+          borderRadius: '8px',
+          background: '#fff',
+        },
+      }
+    );
   };
+  
 
-  // Handle Update
-  const handleUpdate = (tutorial) => {
-    // Redirect to the update page or open a modal for editing
-    toast.success("Update functionality coming soon!"); // Placeholder
-    // Implement modal or navigation logic here
-  };
+  
 
   if (loading) {
     return (
@@ -110,14 +138,14 @@ const MyTutorials = () => {
                   {tutorial.reviews}
                 </td>
                 <td className="border border-gray-300 dark:border-gray-600 px-4 py-2 space-y-2">
+                  <Link to={`/update/${tutorial._id}`}>
                   <button
-                    onClick={() => handleUpdate(tutorial)}
                     className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors w-full"
                   >
                     Update
                   </button>
+                  </Link>
                   <button
-                    onClick={() => handleDelete(tutorial._id)}
                     className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-colors w-full"
                   >
                     Delete

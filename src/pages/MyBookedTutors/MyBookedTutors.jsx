@@ -95,7 +95,7 @@ const MyBookedTutors = () => {
                 💵 Price: ${tutor.price}/hour
               </p>
               <p className="text-gray-600 dark:text-gray-300 mt-2">
-                ⭐ Reviews: {tutor.reviews}
+                ⭐ Reviews: {tutor.review}
               </p>
               <button
                 onClick={() => handleAddReview(tutor.tutorId)}
