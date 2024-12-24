@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import UseAxios from "../../Hooks/UseAxios";
-import { toast } from "react-toastify";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const UpdateTutorial = () => {
   const [tutorial, setTutorial] = useState({
@@ -10,13 +11,14 @@ const UpdateTutorial = () => {
     language: "",
     price: "",
     description: "",
-    reviews: 0,
+    review: 0,
   });
   const {id:ids} = useParams()
   const [loading, setLoading] = useState(true);
   const secureAxios = UseAxios();
   const { id } = useParams(); // Assuming the tutorial id is passed as a URL parameter
   const navigate = useNavigate();
+  console.log(id);
 
   useEffect(() => {
     // Fetch tutorial details to populate the form
@@ -43,11 +45,14 @@ const UpdateTutorial = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(tutorial);
     try {
       const res = await secureAxios.put(`/tutorials/${id}`, tutorial);
+      // const res = await axios.put(`http://localhost:5000/tutorials/${id}`, tutorial)
+      // console.log(tutorial);
       if (res.status === 200) {
         toast.success("Tutorial updated successfully!");
-        navigate("/my-tutorials"); // Redirect to My Tutorials page after successful update
+        // navigate("/my-tutorials"); // Redirect to My Tutorials page after successful update
       }
     } catch (error) {
       console.error("Error updating tutorial:", error);
@@ -145,7 +150,7 @@ const UpdateTutorial = () => {
             type="number"
             id="reviews"
             name="reviews"
-            value={tutorial.reviews}
+            value={tutorial.review}
             onChange={handleChange}
             disabled
             className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md"
