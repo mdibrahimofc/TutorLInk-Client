@@ -4,42 +4,42 @@ const testimonials = [
   {
     id: 1,
     name: 'Jane Doe',
-    profileImage: 'https://via.placeholder.com/80', // Replace with actual image URL
+    profileImage: 'https://i.ibb.co.com/L6Nx99k/Steve-Jobs-Headshot-2010-CROP-cropped-2.jpg', 
     review: 'This platform connected me with an amazing tutor who helped me ace my exams!',
     role: 'Student',
   },
   {
     id: 2,
     name: 'John Smith',
-    profileImage: 'https://via.placeholder.com/80', // Replace with actual image URL
+    profileImage: 'https://i.ibb.co.com/zbSnthX/Bundesarchiv-Bild-183-D0116-0041-019-Albert-Schweitzer.jpg', 
     review: 'Teaching here has been an incredible experience. The system is smooth and easy to use.',
     role: 'Tutor',
   },
   {
     id: 3,
     name: 'Emily Johnson',
-    profileImage: 'https://via.placeholder.com/80', // Replace with actual image URL
+    profileImage: 'https://i.ibb.co.com/hVKC1L3/istockphoto-1409751960-2048x2048.jpg',
     review: 'I love how easy it is to find a tutor that matches my learning style.',
     role: 'Student',
   },
   {
     id: 4,
     name: 'Jane Doe',
-    profileImage: 'https://via.placeholder.com/80', // Replace with actual image URL
+    profileImage: 'https://i.ibb.co.com/MgGw5xJ/istockphoto-1435745704-2048x2048.jpg',
     review: 'This platform connected me with an amazing tutor who helped me ace my exams!',
     role: 'Student',
   },
   {
     id: 5,
     name: 'John Smith',
-    profileImage: 'https://via.placeholder.com/80', // Replace with actual image URL
+    profileImage: 'https://i.ibb.co.com/b3mRPsr/istockphoto-1388648617-2048x2048.jpg',
     review: 'Teaching here has been an incredible experience. The system is smooth and easy to use.',
     role: 'Tutor',
   },
   {
     id: 6,
     name: 'Emily Johnson',
-    profileImage: 'https://via.placeholder.com/80', // Replace with actual image URL
+    profileImage: 'https://i.ibb.co.com/0mzk1xN/istockphoto-1364917563-612x612-2.jpg',
     review: 'I love how easy it is to find a tutor that matches my learning style.',
     role: 'Student',
   },

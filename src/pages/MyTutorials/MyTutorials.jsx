@@ -15,6 +15,9 @@ const MyTutorials = () => {
 
   // Fetch tutorials added by the logged-in user
   useEffect(() => {
+    if(!user?.email){
+      return
+    }
     const fetchMyTutorials = async () => {
       try {
         const res = await secureAxios.get(`/tutorials?email=${user?.email}`);
@@ -27,7 +30,7 @@ const MyTutorials = () => {
       }
     };
     fetchMyTutorials();
-  }, [secureAxios]);
+  }, [user?.email]);
 
   // Handle Delete
   const handleDelete = (tutorialId) => {
@@ -146,6 +149,7 @@ const MyTutorials = () => {
                   </button>
                   </Link>
                   <button
+                    onClick={()=> handleDelete(tutorial._id)}
                     className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-colors w-full"
                   >
                     Delete

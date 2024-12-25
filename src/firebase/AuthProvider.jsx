@@ -67,29 +67,33 @@ const AuthProvider = ({ children }) => {
 
     // 🟢 Observe Auth State Changes
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+        const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+          try {
             console.log(currentUser);
             setUser(currentUser);
+      
             if (currentUser?.email) {
-                const user = { email: currentUser.email };
-                console.log(user);
-                axios
-                    .post("https://b10a11-server-side-mdibrahimofc.vercel.app/jwt", user, { withCredentials: true })
-                    .then((res) => {
-                        console.log(res);
-                        setLoading(false);
-                    })
-                    .catch((err) => {
-                        console.error(err);
-                        setLoading(false);
-                    });
-            } else {
-                setLoading(false);
+              const user = { email: currentUser.email };
+              console.log(user);
+      
+              const res = await axios.post(
+                "https://b10a11-server-side-mdibrahimofc.vercel.app/jwt",
+                user,
+                { withCredentials: true }
+              );
+      
+              console.log(res.data);
             }
+          } catch (error) {
+            console.error("Error fetching JWT:", error);
+          } finally {
+            setLoading(false);
+          }
         });
-        return () => unsubscribe(); 
-    }, []);
-
+      
+        return () => unsubscribe();
+      }, [auth, setUser, setLoading]);
+      
     // 🟢 Auth Context Value
     const authInfo = {
         loading,

@@ -4,7 +4,7 @@ const featuredTutors = [
   {
     id: 1,
     name: 'Sophia Brown',
-    profileImage: 'https://via.placeholder.com/80', // Replace with actual image URL
+    profileImage: 'https://i.ibb.co.com/b3mRPsr/istockphoto-1388648617-2048x2048.jpg', 
     specialization: 'English Language',
     rating: 4.9,
     price: '$25/hr',
@@ -12,7 +12,7 @@ const featuredTutors = [
   {
     id: 2,
     name: 'Liam Davis',
-    profileImage: 'https://via.placeholder.com/80', // Replace with actual image URL
+    profileImage: 'https://i.ibb.co.com/L6Nx99k/Steve-Jobs-Headshot-2010-CROP-cropped-2.jpg', 
     specialization: 'Japan Language',
     rating: 4.8,
     price: '$30/hr',
@@ -20,7 +20,7 @@ const featuredTutors = [
   {
     id: 3,
     name: 'Olivia Smith',
-    profileImage: 'https://via.placeholder.com/80', // Replace with actual image URL
+    profileImage: 'https://i.ibb.co.com/zbSnthX/Bundesarchiv-Bild-183-D0116-0041-019-Albert-Schweitzer.jpg', 
     specialization: 'Urdu Language',
     rating: 4.7,
     price: '$28/hr',
@@ -28,7 +28,7 @@ const featuredTutors = [
   {
     id: 4,
     name: 'Noah Johnson',
-    profileImage: 'https://via.placeholder.com/80', // Replace with actual image URL
+    profileImage: 'https://i.ibb.co.com/6DXbhfF/istockphoto-1485546774-2048x2048.jpg', 
     specialization: 'Hindi Language',
     rating: 4.6,
     price: '$26/hr',

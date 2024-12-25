@@ -43,15 +43,15 @@ const router = createBrowserRouter([
         },
         {
           path: "tutor/:details",
-          element: <TutorDetails/>
+          element: <PrivateRoute><TutorDetails/></PrivateRoute>
         },
         {
           path: "mybookedtutor",
-          element: <MyBookedTutors/>
+          element: <PrivateRoute><MyBookedTutors/></PrivateRoute>
         },
         {
           path: "mytutorials",
-          element: <MyTutorials/>
+          element: <PrivateRoute><MyTutorials/></PrivateRoute>
         },
         {
           path: "update/:id",

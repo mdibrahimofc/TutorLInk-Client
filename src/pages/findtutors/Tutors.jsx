@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import UseAxios from "../../Hooks/UseAxios";
 import { Link } from "react-router-dom";
 
-const Tutors = ({category}) => {
-  const [tutors, setTutors] = useState([])
+const Tutors = ({category, setTutors, tutors}) => {
   console.log(category);
   const secureAxios = UseAxios()
   useEffect(()=> {

@@ -13,7 +13,7 @@ const UpdateTutorial = () => {
     description: "",
     review: 0,
   });
-  const {id:ids} = useParams()
+  const { id: ids } = useParams();
   const [loading, setLoading] = useState(true);
   const secureAxios = UseAxios();
   const { id } = useParams(); // Assuming the tutorial id is passed as a URL parameter
@@ -47,9 +47,10 @@ const UpdateTutorial = () => {
     e.preventDefault();
     console.log(tutorial);
     try {
-      const res = await secureAxios.put(`/tutorials/${id}`, tutorial);
+      const res = await secureAxios.patch(`/tutorials/${id}`, tutorial);
       // const res = await axios.put(`http://localhost:5000/tutorials/${id}`, tutorial)
-      // console.log(tutorial);
+      console.log(tutorial);
+      console.log(res.data);
       if (res.status === 200) {
         toast.success("Tutorial updated successfully!");
         // navigate("/my-tutorials"); // Redirect to My Tutorials page after successful update
@@ -70,10 +71,15 @@ const UpdateTutorial = () => {
 
   return (
     <div className="max-w-3xl mx-auto p-6">
-      <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">Update Tutorial</h1>
+      <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
+        Update Tutorial
+      </h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="name" className="block text-gray-700 dark:text-gray-300">
+          <label
+            htmlFor="name"
+            className="block text-gray-700 dark:text-gray-300"
+          >
             Name
           </label>
           <input
@@ -87,7 +93,10 @@ const UpdateTutorial = () => {
           />
         </div>
         <div>
-          <label htmlFor="image" className="block text-gray-700 dark:text-gray-300">
+          <label
+            htmlFor="image"
+            className="block text-gray-700 dark:text-gray-300"
+          >
             Image URL
           </label>
           <input
@@ -100,7 +109,7 @@ const UpdateTutorial = () => {
             className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md"
           />
         </div>
-        <div>
+        {/* <div>
           <label htmlFor="language" className="block text-gray-700 dark:text-gray-300">
             Language
           </label>
@@ -113,9 +122,42 @@ const UpdateTutorial = () => {
             required
             className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md"
           />
+        </div> */}
+
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text text-gray-700 dark:text-gray-300">
+              Language
+            </span>
+          </label>
+          <select
+            id="language"
+            name="language"
+            value={tutorial.language || ""}
+            onChange={handleChange}
+            className="select select-bordered w-full dark:bg-gray-700 dark:text-white"
+            required
+          >
+            <option disabled value="">
+              Select a language category
+            </option>
+            <option>English</option>
+            <option>Spanish</option>
+            <option>French</option>
+            <option>German</option>
+            <option>Italian</option>
+            <option>Chinese</option>
+            <option>Arabic</option>
+            <option>Japanese</option>
+            <option>Portuguese</option>
+          </select>
         </div>
+
         <div>
-          <label htmlFor="price" className="block text-gray-700 dark:text-gray-300">
+          <label
+            htmlFor="price"
+            className="block text-gray-700 dark:text-gray-300"
+          >
             Price per Hour
           </label>
           <input
@@ -129,7 +171,10 @@ const UpdateTutorial = () => {
           />
         </div>
         <div>
-          <label htmlFor="description" className="block text-gray-700 dark:text-gray-300">
+          <label
+            htmlFor="description"
+            className="block text-gray-700 dark:text-gray-300"
+          >
             Description
           </label>
           <textarea
@@ -143,7 +188,10 @@ const UpdateTutorial = () => {
           />
         </div>
         <div>
-          <label htmlFor="reviews" className="block text-gray-700 dark:text-gray-300">
+          <label
+            htmlFor="reviews"
+            className="block text-gray-700 dark:text-gray-300"
+          >
             Reviews (Initial Value)
           </label>
           <input

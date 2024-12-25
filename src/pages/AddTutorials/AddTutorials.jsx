@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../firebase/AuthProvider";
-import axios from "axios"
+import axios from "axios";
 import UseAxios from "../../Hooks/UseAxios";
 import toast from "react-hot-toast";
 
 const AddTutorials = () => {
-  const secureAxios = UseAxios()
+  const secureAxios = UseAxios();
   const { user } = useContext(AuthContext);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,18 +14,35 @@ const AddTutorials = () => {
     const description = form.description.value;
     const price = form.price.value;
     const language = form.Language.value;
-    const review = 0
-    const tutorsName = form.userName.value;
-    const tutorsEmail = form.userEmail.value;
+    const review = 0;
+    const email = form.userEmail.value;
+    const name = form.userName.value;
 
-    const tutorial = {image, description, price, language, review, tutorsEmail, tutorsName}
+    const tutorial = {
+      image,
+      name,
+      description,
+      price,
+      language,
+      review,
+      email,
+    };
 
     secureAxios.post("/addTutorial", tutorial)
     .then(res=> {
       console.log(res.data);
       toast.success("tutorial added successfull")
     })
-
+    // fetch("http://localhost:5000/addTutorial", {
+    //   method: "POST",
+    //   headers: { "content-type": "application/json" },
+    //   body: JSON.stringify(tutorial),
+    //   credentials: 'include'
+    // })
+      // .then((res) => res.json())
+      // .then((data) => {
+      //   console.log(data);
+      // });
   };
 
   return (
