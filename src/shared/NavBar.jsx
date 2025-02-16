@@ -33,7 +33,7 @@ const NavBar = () => {
 
   return (
     <nav className="bg-base-100 sticky top-0 z-50 dark:bg-gray-900 dark:text-white shadow-md">
-      <div className="container mx-auto px-4 flex justify-between items-center h-16">
+      <div className="max-w-[1530px] mx-auto flex justify-between items-center h-16">
         {/* Logo */}
         <div>
           <NavLink to="/" className="text-xl font-bold">
@@ -72,6 +72,12 @@ const NavBar = () => {
             className="hover:bg-gray-200 dark:hover:bg-gray-700 px-3 py-2 rounded"
           >
             My Tutorials
+          </NavLink>
+          <NavLink
+            to="/about"
+            className="hover:bg-gray-200 dark:hover:bg-gray-700 px-3 py-2 rounded"
+          >
+            About us
           </NavLink>
         </div>
 

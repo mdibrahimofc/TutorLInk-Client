@@ -14,6 +14,7 @@ import TutorDetails from "../pages/TutorDetails/TutorDetails";
 import MyBookedTutors from "../pages/MyBookedTutors/MyBookedTutors";
 import MyTutorials from "../pages/MyTutorials/MyTutorials";
 import UpdateTutorial from "../pages/UpdateTutorial/UpdateTutorial";
+import AboutUs from "../pages/AboutUs/AboutUs";
 
 const router = createBrowserRouter([
     {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
         {
           path: "find-tutors/:category",
           element: <FindTutors/>
+        },
+        {
+          path: "about",
+          element: <AboutUs/>
         },
         {
           path: "tutor/:details",
