@@ -170,7 +170,7 @@ const NavBar = () => {
             </NavLink>
             <NavLink
               to="/abou"
-              className="block hover:bg-gray-200 dark:hover:bg-gray-700 px-3 py-2 rounded"
+              className="blocksssdd hover:bg-gray-200 dark:hover:bg-gray-700 px-3 py-2 rounded"
               onClick={toggleMenu}
             >
               About Us
