@@ -15,6 +15,7 @@ import MyBookedTutors from "../pages/MyBookedTutors/MyBookedTutors";
 import MyTutorials from "../pages/MyTutorials/MyTutorials";
 import UpdateTutorial from "../pages/UpdateTutorial/UpdateTutorial";
 import AboutUs from "../pages/AboutUs/AboutUs";
+import FAQ from "../pages/FAQ/FAQ";
 
 const router = createBrowserRouter([
     {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
         {
           path: "about",
           element: <AboutUs/>
+        },
+        {
+          path: "faq",
+          element: <FAQ/>,
         },
         {
           path: "tutor/:details",

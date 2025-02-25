@@ -22,6 +22,7 @@ const MyTutorials = () => {
       try {
         const res = await secureAxios.get(`/tutorials?email=${user?.email}`);
         setTutorials(res.data);
+        console.log(res.data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching tutorials:", error);
@@ -98,7 +99,7 @@ const MyTutorials = () => {
   }
 
   return (
-    <div className="max-w-6xl mx-auto p-6">
+    <div className="pb-8 md:pb-12 lg:pb-16 lg:pt-8 pt-4 md:pt-6">
       <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
         My Tutorials
       </h1>
@@ -118,29 +119,29 @@ const MyTutorials = () => {
           <tbody>
             {tutorials.map((tutorial) => (
               <tr key={tutorial._id} className="hover:bg-gray-50 dark:hover:bg-gray-800">
-                <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">
+                <td className="border border-gray-300 dark:border-gray-600 dark:text-white px-4 py-2">
                   <img
                     src={tutorial.image}
                     alt={tutorial.name}
                     className="w-16 h-16 object-cover rounded"
                   />
                 </td>
-                <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">
+                <td className="border border-gray-300 dark:text-white dark:border-gray-600 px-4 py-2">
                   {tutorial.name}
                 </td>
-                <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">
+                <td className="border border-gray-300 dark:text-white dark:border-gray-600 px-4 py-2">
                   {tutorial.language}
                 </td>
-                <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">
+                <td className="border border-gray-300 dark:text-white dark:border-gray-600 px-4 py-2">
                   ${tutorial.price}
                 </td>
-                <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">
+                <td className="border border-gray-300 dark:text-white dark:border-gray-600 px-4 py-2">
                   {tutorial.description}
                 </td>
-                <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">
-                  {tutorial.reviews}
+                <td className="border border-gray-300 text-center text-xl md:text-2xl font-semibold dark:text-white dark:border-gray-600 px-4 py-2">
+                  {tutorial.review}
                 </td>
-                <td className="border border-gray-300 dark:border-gray-600 px-4 py-2 space-y-2">
+                <td className="border border-gray-300 dark:text-white dark:border-gray-600 px-4 py-2 space-y-2">
                   <Link to={`/update/${tutorial._id}`}>
                   <button
                     className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors w-full"

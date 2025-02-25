@@ -4,15 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../firebase/AuthProvider";
 
 const axiosInstance = axios.create({
-  baseURL: "https://b10a11-server-side-mdibrahimofc.vercel.app",
+  baseURL: "https://tutorlink-server.vercel.app",
+  // baseURL: "http://localhost:5000",
   withCredentials: true,
 });
-
-// Uncomment and replace the baseURL for production
-// const axiosInstance = axios.create({
-//   baseURL: "https://b10a11-server-side-mdibrahimofc.vercel.app",
-//   withCredentials: true,
-// });
 
 const UseAxios = () => {
   const { logout } = useContext(AuthContext);

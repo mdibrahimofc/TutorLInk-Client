@@ -37,10 +37,11 @@ const MyBookedTutors = () => {
   // Handle Review Button
   const handleAddReview = async (tutorId) => {
     try {
-      await secureAxios.patch(`/tutors/review/${tutorId}`, { reviewIncrement: 1 });
+      const data = await secureAxios.patch(`/tutors/review/${tutorId}`, { reviewIncrement: 1 });
+      console.log(data.data);
       setBookedTutors((prev) =>
         prev.map((tutor) =>
-          tutor.tutorId === tutorId ? { ...tutor, reviews: tutor.reviews + 1 } : tutor
+          tutor.tutorId === tutorId ? { ...tutor, review: tutor.review + 1 } : tutor
         )
       );
       toast.success("Review count updated successfully!");
@@ -69,7 +70,7 @@ const MyBookedTutors = () => {
   }
 
   return (
-    <div className="max-w-6xl mx-auto p-6">
+    <div className="pb-8 md:pb-12 lg:pb-16 lg:pt-8 pt-4 md:pt-6">
       <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
         My Booked Tutors
       </h1>

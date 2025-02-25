@@ -63,7 +63,7 @@ const Category = () => {
 
   return (
     <div className="dark:bg-gray-800">
-        <div className="grid dark:bg-gray-800 grid-cols-1 py-6 gap-5 sm:grid-cols-2 md:grid-cols-3 w-11/12 lg:w-4/5 mx-auto">
+        <div className="grid dark:bg-gray-800 grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3">
       {category.map((ct) => (
         <Link key={ct.id} to={ct.link} className="group">
           <div className="flex items-center justify-between border dark:border-gray-700 shadow-md rounded-lg p-4 hover:shadow-lg hover:border-gray-400 dark:hover:border-gray-500 transition-all duration-300 bg-white dark:bg-gray-800">

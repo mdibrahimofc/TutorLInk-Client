@@ -7,7 +7,7 @@ import FeaturedTutors from '../pages/home/FeaturedTutors';
 
 const Home = () => {
     return (
-        <div>
+        <div className='space-y-8 md:space-y-12 lg:space-y-16'>
             <Banner/>
             <Category/>
             <Stats/>

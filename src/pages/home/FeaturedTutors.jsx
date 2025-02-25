@@ -1,4 +1,5 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const featuredTutors = [
   {
@@ -37,8 +38,8 @@ const featuredTutors = [
 
 const FeaturedTutors = () => {
   return (
-    <section className="py-12 bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
-      <div className="container mx-auto px-4">
+    <section className="bg-white pb-8 md:pb-12 lg:pb-16 dark:bg-gray-900 transition-colors duration-300">
+      <div>
         <h2 className="text-3xl font-bold text-center mb-8 text-gray-800 dark:text-gray-100">
           Featured Tutors
         </h2>
@@ -63,7 +64,7 @@ const FeaturedTutors = () => {
               <p className="text-yellow-500 mt-2">Rating: {tutor.rating} ⭐</p>
               <button
                 className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 transition"
-                onClick={() => alert(`Viewing profile of ${tutor.name}`)}
+                onClick={() => toast.success('Feature coming soon!')}
               >
                 View Profile
               </button>

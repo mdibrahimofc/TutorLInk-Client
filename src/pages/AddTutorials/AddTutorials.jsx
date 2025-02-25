@@ -46,7 +46,7 @@ const AddTutorials = () => {
   };
 
   return (
-    <div className="my-8">
+    <div className="pb-8 md:pb-12 lg:pb-16 lg:pt-8 pt-4 md:pt-8">
       <p className="text-center text-cyan-500 text-2xl md:text-3xl lg:text-4xl font-bold">
         Add New <br />
         Tutorial

@@ -1,6 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../firebase/AuthProvider';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const AboutUs = () => {
+  const {user} = useContext(AuthContext);
+  const navigate = useNavigate()
+  const handleSingup = () => {
+    // Implement signup redirection logic here
+    if(user){
+      toast.error("You are already signed in");
+    }else{
+      toast.success("Redirecting to signup page...");
+      navigate("/signup");
+    }
+  }
   return (
     <div className="bg-white dark:bg-gray-900 min-h-screen">
       {/* Hero Section */}
@@ -67,7 +81,7 @@ const AboutUs = () => {
         <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto mb-8">
           Join TutorLink and gain access to top educators and personalized learning experiences. Whether you’re aiming for academic excellence or personal growth, we’re here to support your journey.
         </p>
-        <button className="bg-gray-800 dark:bg-white text-white dark:text-gray-800 py-3 px-6 rounded-lg font-semibold">
+        <button onClick={handleSingup} className="bg-gray-800 dark:bg-white text-white dark:text-gray-800 py-3 px-6 rounded-lg font-semibold">
           Sign Up Now
         </button>
       </div>
@@ -92,13 +106,6 @@ const AboutUs = () => {
           </li>
         </ul>
       </div>
-
-      {/* Footer Section */}
-      <footer className="bg-gray-800 dark:bg-gray-900 py-8 text-center">
-        <p className="text-white text-lg">
-          &copy; 2024 TutorLink. All rights reserved. | Terms of Service | Privacy Policy
-        </p>
-      </footer>
     </div>
   );
 };

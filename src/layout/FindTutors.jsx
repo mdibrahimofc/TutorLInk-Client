@@ -8,7 +8,7 @@ const FindTutors = () => {
     const {category} = useParams()
     
     return (
-        <div>
+        <div className='pb-8 md:pb-12 lg:pb-16'>
             <SearchFilter setTutors={setTutors} />
             <Tutors tutors={tutors} setTutors={setTutors} category={category}></Tutors>
         </div>

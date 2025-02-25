@@ -5,7 +5,7 @@ const Banner = () => {
     <div className="relative text-white dark:text-gray-200">
       {/* Top Section with Background Image */}
       <div
-        className="bg-cover bg-gradient-to-r from-gray-400 to-gray-700 bg-center py-12 md:py-16 lg:py-24 px-4 md:px-12"
+        className="bg-cover bg-gradient-to-r from-gray-400 to-gray-700 bg-center py-24 md:py-16 lg:py-48 px-4 md:px-36"
         style={{
           backgroundImage: 'url("https://i.ibb.co/WfXnLsx/studying-5831644-1920.jpg")',
         }}
@@ -38,9 +38,9 @@ const Banner = () => {
       </div>
 
       {/* Bottom Section */}
-      <div className="bg-white dark:bg-gray-900 py-8 px-4 md:px-12 flex flex-col md:flex-row items-center justify-center gap-6">
+      <div className="bg-white dark:bg-gray-900 pt-8 md:pt-12 lg:pt-16 flex flex-col md:flex-row items-center justify-center gap-6">
         {/* Text Section */}
-        <div className="bg-green-200 dark:bg-green-800 p-6 md:p-12 rounded-lg shadow-lg text-center md:w-1/2">
+        <div className="bg-green-200 dark:bg-green-800 p-6 md:p-12 rounded-lg shadow-lg text-center md:w-1/2 flex flex-col justify-center">
           <h3 className="text-3xl font-bold mb-2 text-gray-800 dark:text-gray-100">
             Your Satisfaction, Guaranteed
           </h3>
@@ -52,7 +52,7 @@ const Banner = () => {
           </p>
         </div>
         {/* Image Section */}
-        <div className="md:w-1/2">
+        <div className="md:w-1/2 flex flex-col justify-center">
           <img
             src="https://i.ibb.co/GWCSLw3/boy-5731001-1920.jpg"
             alt="Focused student"
