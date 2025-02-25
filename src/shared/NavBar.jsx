@@ -169,8 +169,8 @@ const NavBar = () => {
               Home
             </NavLink>
             <NavLink
-              to="/abou"
-              className="blocksssdd hover:bg-gray-200 dark:hover:bg-gray-700 px-3 py-2 rounded"
+              to="/about"
+              className="block hover:bg-gray-200 dark:hover:bg-gray-700 px-3 py-2 rounded"
               onClick={toggleMenu}
             >
               About Us
